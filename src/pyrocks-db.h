@@ -18,9 +18,11 @@ private:
   rocksdb_t *_db;
 
 public:
-  bool open();
+  bool open(bool createIfMissing);
   void close();
   int count();
+  std::string read(const std::string &key);
+  void write(const std::string &key, const std::string &value);
 };
 
 #endif
