@@ -63,13 +63,13 @@ class CMakeBuild(build_ext):
 
 
 setup(
-    name='pyrocksdb',
+    name='rocksdb',
     version='0.0.1',
     author='Kapil Sachdeva',
     author_email='notanemail@gmail.com',
     description='Python Bindigs for rocksdb',
     long_description='',
-    ext_modules=[CMakeExtension('pyrocksdb')],
+    ext_modules=[CMakeExtension('rocksdb')],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
 )

@@ -1,5 +1,13 @@
-import pyrocksdb as m
+import sys
+from rocksdb import PyRocksDB
 
-assert m.__version__ == '0.0.1'
-assert m.add(1, 2) == 3
-assert m.subtract(1, 2) == -1
+
+def main(db_path):
+    db = PyRocksDB(db_path)
+    db.open()
+    print(db.count())
+    db.close()
+
+
+if __name__ == '__main__':
+    main(sys.argv[1])
