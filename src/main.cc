@@ -1,10 +1,30 @@
+#include <iostream>
 #include <pybind11/pybind11.h>
+#include <rocksdb/c.h>
 
-int add(int i, int j) { return i + j; }
+int add(int i, int j) {
+
+  std::string dbPath("db-cache");
+
+  rocksdb_options_t *options = rocksdb_options_create();
+  rocksdb_options_set_create_if_missing(options, 1);
+
+  char *err = NULL;
+  rocksdb_t *db = rocksdb_open(options, dbPath.c_str(), &err);
+
+  if (err != NULL) {
+    std::cerr << "Failed to open the database .." << std::endl;
+    return -1;
+  }
+
+  rocksdb_close(db);
+
+  return i + j;
+}
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(cmake_example, m) {
+PYBIND11_MODULE(pyrocksdb, m) {
   m.doc() = R"pbdoc(
         Pybind11 example plugin
         -----------------------
