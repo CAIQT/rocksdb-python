@@ -1,6 +1,7 @@
 #ifndef _include_pyrocks_db_h_
 #define _include_pyrocks_db_h_
 
+#include "pyrocks-iterator.h"
 #include <rocksdb/c.h>
 #include <string>
 
@@ -23,6 +24,7 @@ public:
   int count();
   std::string read(const std::string &key);
   void write(const std::string &key, const std::string &value);
+  std::unique_ptr<PyRocksIterator> newIterator();
 };
 
 #endif

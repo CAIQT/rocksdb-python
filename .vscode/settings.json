@@ -39,6 +39,7 @@
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "valarray": "cpp",
-        "hashtable": "cpp"
+        "hashtable": "cpp",
+        "ostream": "cpp"
     }
 }

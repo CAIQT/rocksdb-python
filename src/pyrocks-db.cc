@@ -90,3 +90,7 @@ void PyRocksDB::write(const std::string &key, const std::string &value) {
   // TODO: proper error handling
   // throw an exception/error
 }
+
+std::unique_ptr<PyRocksIterator> PyRocksDB::newIterator() {
+  return std::make_unique<PyRocksIterator>(_db);
+}

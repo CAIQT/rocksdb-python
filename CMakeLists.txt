@@ -7,7 +7,7 @@ find_package(RocksDB REQUIRED)
 
 add_subdirectory(pybind11)
 
-add_library(rocksdb MODULE src/pyrocks-db.cc src/binder.cc)
+add_library(rocksdb MODULE src/pyrocks-db.cc src/pyrocks-iterator.cc src/binder.cc)
 
 target_link_libraries(rocksdb PRIVATE pybind11::module ${RocksDB_LIBRARIES})
 set_target_properties(rocksdb PROPERTIES PREFIX "${PYTHON_MODULE_PREFIX}"

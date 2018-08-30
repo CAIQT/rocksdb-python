@@ -17,6 +17,15 @@ def main(db_path):
     # read an entry
     print(db.read("Kapil_Sachdeva_Test"))
 
+    iterator = db.new_iterator()
+    print(iterator.is_valid())
+
+    while iterator.is_valid():
+        print(iterator.read_key())
+        iterator.next()
+
+    iterator.dispose()
+
     # close it
     db.close()
 
