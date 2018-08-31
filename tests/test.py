@@ -6,7 +6,7 @@ def main(db_path):
     db = PyRocksDB(db_path)
 
     # open
-    db.open(False)
+    db.open(True)
 
     # count the number of keys
     print(db.count())
