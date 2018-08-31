@@ -82,8 +82,7 @@ void PyRocksDB::write(const std::string &key, const std::string &value) {
   size_t valueLen = value.size();
   const char *entryValue = value.c_str();
 
-  rocksdb_put(_db, writeoptions, entryKey, keyLen, entryValue, valueLen + 1,
-              &err);
+  rocksdb_put(_db, writeoptions, entryKey, keyLen, entryValue, valueLen, &err);
 
   rocksdb_writeoptions_destroy(writeoptions);
 
