@@ -5,8 +5,18 @@ PyRocksDB::PyRocksDB(const std::string &dbPath) : _dbPath(dbPath) {}
 
 PyRocksDB::~PyRocksDB() { close(); }
 
-bool PyRocksDB::open(bool createIfMissing) {
+bool PyRocksDB::open(bool createIfMissing, bool enableCompression) {
   rocksdb_options_t *options = rocksdb_options_create();
+
+  if (!enableCompression) {
+    // Note - rocksdb has many compression types
+    // 0 => no compression
+    // otherwise the default compression type (zlib, snappy etc)
+    // will be properly set so do not path 1 to the below method
+    // as 1 => SnappyCompression, 2=>ZibCompression
+    rocksdb_options_set_compression(options, 0);
+  }
+
   rocksdb_options_set_create_if_missing(options, createIfMissing ? 1 : 0);
 
   char *err = NULL;

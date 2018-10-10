@@ -19,7 +19,7 @@ private:
   rocksdb_t *_db;
 
 public:
-  bool open(bool createIfMissing);
+  bool open(bool createIfMissing, bool enableCompression = true);
   void close();
   int count();
   std::string read(const std::string &key);

@@ -64,7 +64,7 @@ class CMakeBuild(build_ext):
 
 setup(
     name='rocksdb',
-    version='0.0.1',
+    version='0.1.1',
     author='Kapil Sachdeva',
     author_email='notanemail@gmail.com',
     description='Python Bindigs for rocksdb',

@@ -14,7 +14,8 @@ PYBIND11_MODULE(rocksdb, m) {
 
   py::class_<PyRocksDB>(m, "PyRocksDB")
       .def(py::init<const std::string &>())
-      .def("open", &PyRocksDB::open)
+      .def("open", &PyRocksDB::open, "Open the rocksdb database",
+           py::arg("createIfMissing"), py::arg("enableCompression") = true)
       .def("close", &PyRocksDB::close)
       .def("count", &PyRocksDB::count)
       .def("read", &PyRocksDB::read)
