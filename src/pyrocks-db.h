@@ -2,6 +2,7 @@
 #define _include_pyrocks_db_h_
 
 #include "pyrocks-iterator.h"
+#include <memory>
 #include <rocksdb/c.h>
 #include <string>
 
