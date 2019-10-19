@@ -13,6 +13,7 @@ def main(db_path):
 
     # write an entry
     db.write("Kapil_Sachdeva_Test", "Some random string")
+    db.write("Kapil_Sachdeva_Test2", b"Some random string2")
 
     # read an entry
     print(db.read("Kapil_Sachdeva_Test"))
@@ -21,7 +22,8 @@ def main(db_path):
     print(iterator.is_valid())
 
     while iterator.is_valid():
-        print(iterator.read_key())
+        k = iterator.read_key()
+        print(type(k), k)
         iterator.next()
 
     iterator.dispose()
